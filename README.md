@@ -1,7 +1,8 @@
 # 🧠 세상에 나쁜 프롬프트는 없다.
 
-**LLM 기반 워크플로우에서 프롬프트 성능을 자동으로 평가하는 멀티 에이전트 프레임워크**  
 > _"세상에 나쁜 프롬프트는 없다 — 평가받지 않은 프롬프트만 있을 뿐이다."_
+
+**LLM 기반 워크플로우에서 프롬프트 성능을 자동으로 평가하는 멀티 에이전트 프레임워크**  
 
 ---
 
@@ -14,6 +15,8 @@
 ---
 
 ## ⚙️ 아키텍처
+
+> 🧩 노드 간의 책임을 분리함으로써 평가의 **객관성**과 **재현성**을 확보합니다.
 
 이 시스템은 **Planner → Executor → Evaluator** 구조로 구성됩니다.
 
@@ -32,7 +35,33 @@
 - **역할:** 프롬프트를 모른 채 결과물만을 기반으로 평가 수행
 - **출력:** 평가 점수 및 피드백
 
-> 🧩 노드 간의 책임을 분리함으로써 평가의 **객관성**과 **재현성**을 확보합니다.
+---
+
+## 프로젝트 구조
+
+```
+.
+├── main.py                # 진입점
+├── src/
+│   ├── graph.py           # 워크플로우의 핵심 로직
+│   ├── prompt.py          # 프롬프트
+│   ├── node.py            # 노드 함수
+│   └── state.py           # 상태 정의
+├── .example.env           # 환경 변수 예시 파일
+├── pyproject.toml         # 프로젝트 메타데이터 및 의존성
+├── langgraph.json         # LangGraph 설정 파일
+└── README.md
+```
+
+---
+
+## 기술 스택
+
+- Python 3.12+
+- [LangChain](https://python.langchain.com/)
+- [LangGraph](https://github.com/langchain-ai/langgraph)
+- [OpenAI GPT-4o-mini](https://platform.openai.com/docs/models/gpt-4o)
+- python-dotenv
 
 ---
 
@@ -88,41 +117,12 @@ langgraph dev
 
 ---
 
-## 프로젝트 구조
-
-```
-.
-├── main.py                # 진입점
-├── src/
-│   ├── graph.py           # 워크플로우의 핵심 로직
-│   ├── prompt.py          # 프롬프트
-│   ├── node.py            # 노드 함수
-│   └── state.py           # 상태 정의
-├── .example.env           # 환경 변수 예시 파일
-├── pyproject.toml         # 프로젝트 메타데이터 및 의존성
-├── langgraph.json         # LangGraph 설정 파일
-└── README.md
-```
-
----
-
-## 기술 스택
-
-- Python 3.12+
-- [LangChain](https://python.langchain.com/)
-- [LangGraph](https://github.com/langchain-ai/langgraph)
-- [OpenAI GPT-4o-mini](https://platform.openai.com/docs/models/gpt-4o)
-- python-dotenv
-
----
-
 ## 사용 예시
 
 1. 프롬프트를 입력하면, 시스템이 자동으로 평가 가능 여부를 진단합니다.
 2. 평가가 가능하면, 프롬프트에 맞는 평가 기준을 생성합니다.
 3. 프롬프트 실행 결과를 바탕으로 각 항목별 점수와 상세 피드백을 제공합니다.
 4. 정보가 부족하면, 추가 정보를 요청하는 대화가 진행됩니다.
-
 
 ---
 
