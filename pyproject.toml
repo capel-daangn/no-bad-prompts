@@ -1,0 +1,12 @@
+[project]
+name = "no-bad-prompts"
+version = "0.1.0"
+description = "No Bad Prompts"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=0.3.21",
+    "langchain-openai>=0.3.10",
+    "langgraph>=0.3.20",
+    "python-dotenv>=1.1.0",
+]
