@@ -4,7 +4,8 @@
 
 **LLM 기반 워크플로우에서 프롬프트 성능을 자동으로 평가하는 멀티 에이전트 프레임워크**  
 
----
+<br/>
+<br/>
 
 ## 📌 개요
 
@@ -12,7 +13,8 @@
 
 프롬프트 품질 관리, 리그레션 테스트, 실험 비교 등에 유용하게 사용할 수 있습니다.
 
----
+<br/>
+<br/>
 
 ## ⚙️ 아키텍처
 
@@ -35,7 +37,8 @@
 - **역할:** 프롬프트를 모른 채 결과물만을 기반으로 평가 수행
 - **출력:** 평가 점수 및 피드백
 
----
+<br/>
+<br/>
 
 ## 프로젝트 구조
 
@@ -53,7 +56,8 @@
 └── README.md
 ```
 
----
+<br/>
+<br/>
 
 ## 기술 스택
 
@@ -63,7 +67,8 @@
 - [OpenAI GPT-4o-mini](https://platform.openai.com/docs/models/gpt-4o)
 - python-dotenv
 
----
+<br/>
+<br/>
 
 ## 🚀 시작하기
 
@@ -81,8 +86,11 @@
 git clone https://github.com/your-org/no-bad-prompts.git
 cd no-bad-prompts
 pip install -r requirements.txt
+```
 
----
+<br/>
+<br/>
+
 
 ## 설치 및 실행 방법
 
@@ -115,7 +123,8 @@ LangGraph 개발 서버를 실행합니다.
 langgraph dev
 ```
 
----
+<br/>
+<br/>
 
 ## 사용 예시
 
@@ -124,7 +133,8 @@ langgraph dev
 3. 프롬프트 실행 결과를 바탕으로 각 항목별 점수와 상세 피드백을 제공합니다.
 4. 정보가 부족하면, 추가 정보를 요청하는 대화가 진행됩니다.
 
----
+<br/>
+<br/>
 
 ## 기여
 
