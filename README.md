@@ -3,8 +3,8 @@
 **LLM 기반 워크플로우에서 프롬프트 성능을 자동으로 평가하는 멀티 에이전트 프레임워크**  
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./img/langgraph_studio_dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="./img/langgraph_studio_light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="./src/langgraph_studio_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="./src/langgraph_studio_light.png">
   <img alt="LangGraph Studio" src="http://LIGHT_IMAGE_URL.png">
 </picture>
 
@@ -20,6 +20,8 @@
 `no-bad-prompts`는 LLM(대형 언어 모델) 기반 도구에서 사용되는 **프롬프트의 품질을 자동으로 평가**하는 시스템입니다. 기존에는 프롬프트를 실행해 결과를 눈으로 확인하는 수작업이 필요했지만, 이 프로젝트는 LangGraph 기반의 구조화된 평가 플로우를 통해 반복 검증 과정을 자동화합니다.
 
 프롬프트 품질 관리, 리그레션 테스트, 실험 비교 등에 유용하게 사용할 수 있습니다.
+
+
 
 <br/>
 <br/>
