@@ -1,6 +1,6 @@
-from src.state import AgentState, InputState
+from app.state import AgentState, InputState
 from langgraph.graph import StateGraph, START, END
-from src.node import analyzer, router, planner, ask_for_more_info, evaluator, executor
+from app.node import analyzer, router, planner, ask_for_more_info, evaluator, executor
 
 
 builder = StateGraph(state_schema=AgentState, input=InputState)
