@@ -44,7 +44,10 @@ def ask_for_more_info(
 def planner(
     state: AgentState, *, config: RunnableConfig
 ) -> dict[str, list[BaseMessage]]:
-    messages = [SystemMessage(content=PLANNER_PROMPT)] + state.messages
+    messages = [
+        SystemMessage(content=PLANNER_PROMPT),
+        HumanMessage(content=state.prompt),
+    ]
     response = model.invoke(messages)
     return {"messages": [response]}
 
