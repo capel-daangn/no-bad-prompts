@@ -3,8 +3,8 @@
 **LLM 기반 워크플로우에서 프롬프트 성능을 자동으로 평가하는 멀티 에이전트 프레임워크**  
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./img/langgraph_studio_dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="./img/langgraph_studio_light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="./src/langgraph_studio_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="./src/langgraph_studio_light.png">
   <img alt="LangGraph Studio" src="http://LIGHT_IMAGE_URL.png">
 </picture>
 
@@ -21,6 +21,9 @@
 
 프롬프트 품질 관리, 리그레션 테스트, 실험 비교 등에 유용하게 사용할 수 있습니다.
 
+[demo.webm](https://github.com/user-attachments/assets/4c0f2f94-ae33-441d-bfb5-2adb104c139e)
+
+
 <br/>
 <br/>
 
@@ -31,19 +34,37 @@
 이 시스템은 **Planner → Executor → Evaluator** 구조로 구성됩니다.
 
 ### 1. Planner 노드
-- **입력:** 전체 프롬프트 전문
+- **입력:** 시스템 프롬프트 전문
 - **역할:** 평가 기준(예: 적절성, 정확성, 간결성 등)을 동적으로 추출
 - **출력:** 평가 지표 리스트
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./src/step3-planner.png">
+  <source media="(prefers-color-scheme: light)" srcset="./src/step3-planner.png">
+  <img alt="LangGraph Studio" src="http://LIGHT_IMAGE_URL.png">
+</picture>
 
 ### 2. Executor 노드
-- **입력:** 프롬프트 전문
-- **역할:** LLM을 호출해 결과 생성
+- **입력:** 시스템 프롬프트 전문
+- **역할1:** 가상의 사용자 요청 생성
+- **역할2:** LLM을 호출해 결과 생성
 - **출력:** LLM 응답 결과
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./src/step4-executor.png">
+  <source media="(prefers-color-scheme: light)" srcset="./src/step4-executor.png">
+  <img alt="LangGraph Studio" src="http://LIGHT_IMAGE_URL.png">
+</picture>
 
 ### 3. Evaluator 노드
 - **입력:** Planner에서 생성한 평가 기준 + Executor의 결과물
-- **역할:** 프롬프트를 모른 채 결과물만을 기반으로 평가 수행
+- **역할:** 시스템 프롬프트를 모른 채 결과물만을 기반으로 평가 수행
 - **출력:** 평가 점수 및 피드백
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./src/step5-evaluator.png">
+  <source media="(prefers-color-scheme: light)" srcset="./src/step5-evaluator.png">
+  <img alt="LangGraph Studio" src="http://LIGHT_IMAGE_URL.png">
+</picture>
 
 <br/>
 <br/>
@@ -53,9 +74,10 @@
 ```
 .
 ├── main.py                # 진입점
-├── src/
+├── app/
 │   ├── graph.py           # 워크플로우의 핵심 로직
 │   ├── prompt.py          # 프롬프트
+│   ├── llm.py             # 모델 정의
 │   ├── node.py            # 노드 함수
 │   └── state.py           # 상태 정의
 ├── .example.env           # 환경 변수 예시 파일
